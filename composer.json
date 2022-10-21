@@ -1,0 +1,43 @@
+{
+  "name": "pipe/sql",
+  "description": "Blazingly fast php sql util",
+  "keywords": [
+    "php",
+    "simple database",
+    "sql",
+    "php sql",
+    "php database"
+  ],
+  "homepage": "https://github.com/pipephp/sql",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Unamata Sanatarai",
+      "email": "unamatasanatarai@gmail.com",
+      "homepage": "https://github.com/unamatasanatarai",
+      "role": "c.e.o."
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Pipe\\": "src/"
+    },
+    "files": [
+      "src/functions.php"
+    ]
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require-dev": {
+    "pestphp/pest": "^1.22"
+  },
+  "config": {
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
+  },
+  "scripts": {
+    "test": "./vendor/bin/pest"
+  }
+}
