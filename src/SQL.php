@@ -10,6 +10,7 @@ class SQL
 
     public $connection = null;
     public $stmt = null;
+    public $lastResult = false;
 
     public static function getInstance(): static
     {
@@ -42,14 +43,14 @@ class SQL
 
     public function raw(string $sql)
     {
-        $this->stmt = $this->connection->query($sql);
+        $this->lastResult = $this->stmt = $this->connection->query($sql);
         return $this;
     }
 
     public function prepared(string $sql, array $args = [])
     {
         $this->stmt = $this->connection->prepare($sql);
-        $this->stmt->execute($args);
+        $this->lastResult = $this->stmt->execute($args);
         return $this;
     }
 
@@ -71,5 +72,10 @@ class SQL
     public function lastInsertId(): int
     {
         return $this->connection->lastInsertId();
+    }
+
+    public function lastrResult(): bool
+    {
+        return $this->lastResult();
     }
 }
