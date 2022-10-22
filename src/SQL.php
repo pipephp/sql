@@ -74,8 +74,8 @@ class SQL
         return $this->connection->lastInsertId();
     }
 
-    public function lastrResult(): bool
+    public function lastResult(): bool
     {
-        return $this->lastResult();
+        return $this->lastResult;
     }
 }
