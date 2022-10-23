@@ -25,13 +25,13 @@ beforeAll(function () {
 });
 
 it("prepares and fetches all", function () {
-    $r = db()->prepared("select * from users");
+    $r = db()->query("select * from users");
 
     expect($r->all())->toBeArray()->toHaveCount(6);
 });
 
 it("prepares and fetches first", function () {
-    $r = db()->prepared("select * from users where name = '2mark'");
+    $r = db()->query("select * from users where name = '2mark'");
     $row = $r->first();
 
     expect($row)->toBeObject();
@@ -39,13 +39,13 @@ it("prepares and fetches first", function () {
 });
 
 it("prepares and binds and fetches all", function () {
-    $r = db()->prepared("select * from users where name like :name", ['name' => '%mark']);
+    $r = db()->query("select * from users where name like :name", ['name' => '%mark']);
     expect($r->all())->toBeArray();
 });
 
 it("prepares and returns a count", function () {
-    $r = db()->prepared("select count(id) from users where name like :name", ['name' => '2%']);
+    $r = db()->query("select count(id) from users where name like :name", ['name' => '2%']);
     expect($r->one())->toEqual(2);
-    $r = db()->prepared("select count(id) from users where name not like :name", ['name' => '2%']);
+    $r = db()->query("select count(id) from users where name not like :name", ['name' => '2%']);
     expect($r->one())->toEqual(4);
 });

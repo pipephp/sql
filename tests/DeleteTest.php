@@ -27,7 +27,7 @@ beforeAll(function () {
             ]
         );
     }
-    $r = db()->prepared(
+    $r = db()->query(
         "
         INSERT INTO `users` (`name`, `password`, `created_at`, `updated_at`, `deleted`) VALUES 
         (?, ?, ?, ?, ?),
@@ -39,8 +39,8 @@ beforeAll(function () {
 });
 
 it("prepares and deletes one", function () {
-    $cnt = db()->prepared("SELECT count(*) from users")->one();
+    $cnt = db()->query("SELECT count(*) from users")->one();
     expect($cnt)->toEqual(3);
-    db()->prepared("DELETE from users where id = 1");
-    expect(db()->prepared("SELECT count(*) from users")->one())->toEqual($cnt - 1);
+    db()->query("DELETE from users where id = 1");
+    expect(db()->query("SELECT count(*) from users")->one())->toEqual($cnt - 1);
 });

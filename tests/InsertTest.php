@@ -16,7 +16,7 @@ beforeAll(function () {
 });
 
 it("prepares and inserts one", function () {
-    $r = db()->prepared(
+    $r = db()->query(
         "INSERT INTO `users` (`name`, `password`, `created_at`, `updated_at`, `deleted`)
         VALUES (:name, :password, :created_at, :updated_at, :deleted)",
         [
@@ -48,7 +48,7 @@ it("prepares and inserts many", function () {
             ]
         );
     }
-    $r = db()->prepared(
+    $r = db()->query(
         "
         INSERT INTO `users` (`name`, `password`, `created_at`, `updated_at`, `deleted`) VALUES 
         (?, ?, ?, ?, ?),

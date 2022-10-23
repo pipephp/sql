@@ -27,7 +27,7 @@ beforeAll(function () {
             ]
         );
     }
-    $r = db()->prepared(
+    $r = db()->query(
         "
         INSERT INTO `users` (`name`, `password`, `created_at`, `updated_at`, `deleted`) VALUES 
         (?, ?, ?, ?, ?),
@@ -39,7 +39,7 @@ beforeAll(function () {
 });
 
 it("prepares and updates one", function () {
-    $r = db()->prepared(
+    $r = db()->query(
         "UPDATE `users` SET `name` = :name, `deleted` = :deleted WHERE name like '%2'",
         [
             'name' => 'updated',

@@ -15,10 +15,12 @@ class SQL
         string $user,
         string $password,
         string $dbname,
+        int $port = 3306,
+        string $encoding = "utf8"
     ): self
     {
         $connection = new PDO(
-            "mysql:dbname=$dbname;host=$host;charset=utf8;port=3306",
+            "mysql:dbname=$dbname;host=$host;charset=$encoding;port=$port",
             $user,
             $password,
         );
@@ -36,7 +38,7 @@ class SQL
         return $this;
     }
 
-    public function prepared(string $sql, array $args = [])
+    public function query(string $sql, array $args = [])
     {
         $this->stmt = $this->connection->prepare($sql);
         $this->lastResult = $this->stmt->execute($args);
