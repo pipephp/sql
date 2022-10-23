@@ -6,20 +6,9 @@ use PDO;
 
 class SQL
 {
-    private static $instance;
-
     public $connection = null;
     public $stmt = null;
     public $lastResult = false;
-
-    public static function getInstance(): static
-    {
-        if (self::$instance === null) {
-            self::$instance = new self();
-        }
-
-        return self::$instance;
-    }
 
     public function connect(
         string $host,

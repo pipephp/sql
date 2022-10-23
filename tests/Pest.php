@@ -38,3 +38,13 @@
 | global functions to help you to reduce the number of lines of code in your test files.
 |
 */
+class DBTMP
+{
+    public static $db;
+}
+function db()
+{
+    return DBTMP::$db;
+}
+DBTMP::$db = new Pipe\SQL();
+

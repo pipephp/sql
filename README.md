@@ -18,6 +18,16 @@
 composer require pipe/sql
 ```
 
+## Usage
+
+Instantiate the class directly, or find a way to _Singletonize_ it in your project.
+
+```
+$db = (new Pipe\SQL())->connect($host, $user, $pass, $name);
+$db->raw("SELECT * FROM users")->all();
+```
+
+
 ## Philosophy
 
 1. **Small is Beautiful.**
